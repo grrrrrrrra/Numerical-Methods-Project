@@ -1,78 +1,45 @@
+# Numerical Methods for Root Finding
 
-# Tourist Chatbot for Northern Caucasus Resort Cities
+This project implements several numerical methods for finding the roots of functions. It includes the following methods:
 
-This project is a multilingual Telegram chatbot designed to help users explore popular attractions in resort cities of the Northern Caucasus. The bot supports Russian and Chinese languages, providing up-to-date information about various cities and landmarks in the region. Administrators have access to special commands for managing users and viewing popular search queries.
+- **Bisection Method**
+- **Secant Method**
+- **Iteration Method**
+- **Newton-Raphson Method**
 
-## Features
+## Table of Contents
 
-- **Multilingual Support**: Users can interact with the bot in Russian and Chinese.
-- **City and Attraction Listings**: Users can browse cities and attractions with inline keyboard navigation.
-- **Popular Searches**: Displays a list of the top 10 most popular attractions requested by users.
-- **Voice Command Support**: Users can send voice messages to search for cities and attractions, which the bot converts to text and processes.
-- **Admin Commands**: Special commands allow admins to view the user list, send messages, and monitor popular search trends.
-- **Modular Structure**: Easily scalable and adaptable for adding new locations or additional languages.
+- [Introduction](#introduction)
+- [Methods](#methods)
+  - [Bisection Method](#bisection-method)
+  - [Secant Method](#secant-method)
+  - [Iteration Method](#iteration-method)
+  - [Newton-Raphson Method](#newton-raphson-method)
+- [Usage](#usage)
 
-## Setup and Installation
+## Introduction
 
-### Prerequisites
-- Python 3.6+
-- Telegram Bot API token (place in a `TOKEN.txt` file)
-- Required libraries (install via `pip`):
-  ```bash
-  pip install pyTelegramBotAPI speechrecognition transliterate pypinyin
-  ```
+Root finding is a fundamental problem in numerical analysis. These methods are used to locate roots of real-valued functions. Each method has its own advantages and is suited for different types of problems.
 
-### Directory Structure
-- `DB/`: Contains the main database of city and attraction information, organized by language.
-- `Messege/`: Stores user messages to analyze popular search trends.
-- `Users/`: Stores user information for admin management.
-- `UaP/`: Tracks language preferences for each user.
+## Methods
 
-### Running the Bot
-1. Clone the repository and navigate to the project folder.
-   ```bash
-   git clone https://github.com/yourusername/tourist-chatbot.git
-   cd tourist-chatbot
-   ```
-2. Place your Telegram Bot token in a file named `TOKEN.txt`.
-3. Run the bot:
-   ```bash
-   python main.py
-   ```
+### Bisection Method
 
-## Commands
+The Bisection Method is a bracketing method that repeatedly bisects an interval and selects a subinterval in which a root must lie. It requires two initial points, \(x_0\) and \(x_1\), such that \(f(x_0)\) and \(f(x_1)\) have opposite signs.
 
-### User Commands
-- `/start`: Start the bot, select language, and view initial options.
-- `/help`: View available commands and their descriptions.
-- `/popular`: Display the 10 most popular attractions.
+### Secant Method
 
-### Admin Commands
-- `/users`: Display the list of all bot users.
-- `/sendyorescode`: Sends the current bot code in parts to the admin.
-- `/message`: Allows admins to send a message to any user by specifying the user’s ID.
-  
-### Additional Features
-- **Voice Recognition**: Users can send voice messages with attraction names to receive information.
-- **Dynamic Search with Pagination**: Users can navigate through cities and attractions using interactive buttons.
+The Secant Method uses two initial approximations to approximate the root of the function. It uses the formula based on the line connecting two points on the function graph. Unlike the Bisection Method, it does not require the function to change signs.
 
-## Code Structure
+### Iteration Method
 
-### Key Functions
-- **`updDB()`**: Updates city and attraction data from the `DB/` directory.
-- **`updpopular()`**: Analyzes messages to identify the top 10 popular searches.
-- **`mesegereply()`**: Processes text commands from users, determining whether the input is a city, attraction, or other query.
-- **`voice_processing()`**: Converts voice messages to text and processes them as a search query.
+The Iteration Method (or Fixed-Point Iteration) involves rearranging the equation \(f(x) = 0\) into the form \(x = g(x)\). The method iteratively substitutes the previous value to converge to the root.
 
-### Inline Keyboard
-The bot dynamically generates inline keyboard buttons for navigating through lists of cities and attractions, with pages limited by the `On_page` and `Max_page` variables.
+### Newton-Raphson Method
 
-### Logging and User Profiles
-User profiles are stored in the `Users/` directory, and logs of their interactions are saved in `Messege/` for analysis of popular searches.
+The Newton-Raphson Method is an iterative root-finding algorithm that uses the function's derivative. It starts with an initial guess and iteratively improves the approximation using the formula:
+\[ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} \]
 
-## Future Improvements
-- Expand language support to include English and other languages.
-- Implement additional admin tools for better analytics and user management.
-- Optimize search for more efficient voice and text processing.
+## Usage
 
-
+To use any of these methods, simply call the respective function with the appropriate parameters. Each function is designed to compute the root of the specified function using the method described.
